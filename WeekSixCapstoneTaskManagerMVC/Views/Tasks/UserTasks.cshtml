@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WeekSixCapstoneTaskManagerMVC.Models.User>
+
+@{
+    ViewBag.Title = "UserTasks";
+}
+
+<h2>UserTasks</h2>
+
+@using (Html.BeginForm("TaskSearch", "Tasks", FormMethod.Get))
+{
+    @Html.TextBox("searching")
+    <input type="submit" value="Search" />
+}
+
+@Html.ActionLink("Create Task", "Create", new { }, new { @class = "btn btn-primary" })
+
+<table class="table table-bordered">
+    <tr>
+
+        <th>Assigned To</th>
+        <th>Task Description</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    @for (int i = 0; i < ViewBag.Tasks.Count; i++)
+    {
+
+
+        <tr>
+
+            <td>@ViewBag.Tasks[i].EmailAddress</td>
+            <td>@ViewBag.Tasks[i].Description</td>
+            <td>@ViewBag.Tasks[i].DueDate</td>
+            <td>@ViewBag.Tasks[i].Status</td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = ViewBag.Tasks[i].Name.ToString() }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Mark Complete", "MarkComplete", new { id = ViewBag.Tasks[i].Name.ToString() }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

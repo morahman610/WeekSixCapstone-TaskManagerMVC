@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "TaskSearch";
+}
+
+<h2>TaskSearch</h2>
+
+<table class="table table-bordered">
+    <tr>
+
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+
+        @foreach (var i in ViewBag.tasks)
+        {
+        <tr>
+
+            <td>@ViewBag.i.Name</td>
+            <td>@ViewBag.i.Description</td>
+            <td>@ViewBag.i.Status</td>
+
+        </tr>
+    }
+
+
+
+    </table>
